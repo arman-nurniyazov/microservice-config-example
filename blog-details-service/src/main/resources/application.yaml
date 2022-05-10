@@ -1,0 +1,27 @@
+server:
+  port: 38555
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/surviversms1?currentSchema=blogdetailsservice
+    username: postgres
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: blog-details-service
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9595/eureka
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${random.uuid}
+    lease-renewal-interval-in-seconds: 30
