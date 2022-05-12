@@ -1,4 +1,4 @@
-package uz.jl.blogservice.details;
+package uz.jl.blogservice.blog.dto;
 
 import lombok.*;
 
@@ -18,7 +18,7 @@ public class BlogDetailsDto {
 
     private String body;
 
-    private int likeCount;
+    private Integer likeCount;
 
-    private int dislikeCount;
+    private Integer dislikeCount;
 }

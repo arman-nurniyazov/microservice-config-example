@@ -1,4 +1,4 @@
-package uz.jl.blogservice.details;
+package uz.jl.blogservice.blog.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

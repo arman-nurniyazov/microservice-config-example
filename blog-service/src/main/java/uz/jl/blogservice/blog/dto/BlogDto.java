@@ -1,8 +1,9 @@
-package uz.jl.blogservice.blog;
+package uz.jl.blogservice.blog.dto;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import uz.jl.blogservice.blog.Blogs;
 
 @Builder
 @Getter

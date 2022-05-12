@@ -1,9 +1,6 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/surviversms1?currentSchema=blogservice
-    username: postgres
-    password: admin123
-    driver-class-name: org.postgresql.Driver
+  jackson:
+    default-property-inclusion: non_null
   jpa:
     show-sql: true
     hibernate:
@@ -13,6 +10,7 @@ spring:
         format_sql: true
   application:
     name: blog-service
+
 
 server:
   port: 42773
@@ -26,11 +24,9 @@ eureka:
     instanceId: ${spring.application.name}:${random.uuid}
     lease-renewal-interval-in-seconds: 30
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: hystrix.stream
+
+
+
 hystrix:
   dashboard:
     proxy-stream-allow-list: '*'
