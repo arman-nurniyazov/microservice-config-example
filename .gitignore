@@ -135,3 +135,7 @@ fabric.properties
 /blog-details-service/.mvn/wrapper/maven-wrapper.jar
 /blog-service/.mvn/wrapper/maven-wrapper.jar
 /service-registery/.mvn/wrapper/maven-wrapper.jar
+/.idea/git_toolbox_prj.xml
+/blog-details-service/.mvn/wrapper/maven-wrapper.jar
+/blog-service/.mvn/wrapper/maven-wrapper.jar
+/service-registery/.mvn/wrapper/maven-wrapper.jar

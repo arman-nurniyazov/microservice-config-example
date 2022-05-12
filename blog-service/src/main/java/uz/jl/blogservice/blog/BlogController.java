@@ -1,5 +1,7 @@
 package uz.jl.blogservice.blog;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +15,9 @@ import java.util.List;
 @RequestMapping("/api/v1/blog")
 public class BlogController {
     private final BlogService service;
-    private final RestTemplate restTemplate;
+    private final BlogDetailsResource resource;
     private final Environment environment;
 
-    @GetMapping("/test")
-    public int getPort() {
-        int port = restTemplate.getForObject("http://BLOG-DETAILS-SERVICE/api/v1/details/test", Integer.class);
-        return port;
-    }
 
     @GetMapping
     public List<BlogDto> getAll() {
@@ -40,9 +37,14 @@ public class BlogController {
                 .blogId(blogs.getBlogId())
                 .build();
 
-        BlogDetailsDto detailsDto =
-                restTemplate.getForObject("http://BLOG-DETAILS-SERVICE/api/v1/details/" + blogs.getBlogId(), BlogDetailsDto.class);
-        return new DetailsDto(blogDto, detailsDto);
+        BlogDetailsDto detailsDto = resource.getBlogDetails(blogs.getBlogId());
+        return new DetailsDto(blogDto, detailsDto, null);
+    }
+
+
+
+    public BlogDetailsDto fallbackForGet(Integer id) {
+        return null;
     }
 
     @PostMapping

@@ -1,6 +1,7 @@
 package uz.jl.blogdetailsservice.details;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -21,8 +22,10 @@ public class BlogDetailsController {
         return env.getProperty("server.port", Integer.class);
     }
 
+    @SneakyThrows
     @GetMapping("/{id}")
     public BlogDetailsDto get(@PathVariable Integer id) {
+//        Thread.sleep(2000);
         BlogDetails blogDetails = repository.findById(id).orElseThrow(() -> {
             throw new RuntimeException("Blog post not found with id : %s".formatted(id));
         });

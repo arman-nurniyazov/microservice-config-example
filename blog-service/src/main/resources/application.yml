@@ -25,3 +25,12 @@ eureka:
     preferIpAddress: true
     instanceId: ${spring.application.name}:${random.uuid}
     lease-renewal-interval-in-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: '*'
