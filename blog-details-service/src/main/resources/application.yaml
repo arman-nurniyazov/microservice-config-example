@@ -3,9 +3,9 @@ server:
 spring:
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/surviversms1?currentSchema=blogdetailsservice
-    username: postgres
-    password: admin123
+    url: db_url
+    username: db_username
+    password: db_password
     driver-class-name: org.postgresql.Driver
   application:
     name: blog-details-service
